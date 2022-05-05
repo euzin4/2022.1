@@ -1,0 +1,16 @@
+1-Encontre os atores distintos que atuaram na série “Band of Brothers”; volta 36 rows
+select name from actors join content_actors on actors.actor_id=content_actors.actor_id join contents on content_actors.content_id=contents.content_id where contents.title='Band of Brothers';
+
+2-Encontre os nomes dos títulos com pontuação maior que o score médio; volta 222 rows
+select title from contents where contents.imdb_score > (select avg(contents.imdb_score) from contents);
+
+3-Encontre o score médio dos filmes a partir do “imdb_score”;
+select avg(contents.imdb_score) from contents;
+
+4-Encontre o nome dos  3 diretores que possuem um maior score médio de seus títulos produzidos;
+
+
+5-Encontre os 10  títulos com as melhores avaliações  e, dentro desse top-10, encontre os nomes dos títulos com as 3 melhores avaliações;
+
+
+6-Encontre o ano que foram publicados mais de 10 títulos (usar o Having);
