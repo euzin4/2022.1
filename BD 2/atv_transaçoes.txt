@@ -1,0 +1,7 @@
+a)create table teste (id integer primary key, value char(500));
+
+b)insert into teste values(1,'algo1'),(2,'algo2'),(3,'algo3'),(4,'algo4'),(5,'algo5'),(6,'algo6'),(7,'algo7'),(8,'algo8'),(9,'algo9'),(0,'algo0');
+
+c)SELECT pg_size_pretty( pg_total_relation_size('teste'));
+
+d,e)a segunda transação fica em espera até que a primeira seja commitada, quando a primeira é commitada a segunda acusa um erro de chave primaria duplicada e quando essa transação é terminada acontece um rollback
