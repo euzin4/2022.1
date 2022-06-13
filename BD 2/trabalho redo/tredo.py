@@ -7,17 +7,17 @@ print("----\n"+arq[0])			#printa através da posição do vetor'''
 
 import psycopg2
 conn = psycopg2.connect (	#cria conexao com o BD
-    dbname = "teste",
-    user = "postgres",
-    password = "postgres",
-    host = "localhost",
-    port = "5432")
+	dbname = "teste",
+	user = "postgres",
+	password = "postgres",
+	host = "localhost",
+	port = "5432")
 cur = conn.cursor()			#conecta ao BD
+
 cur.execute('SELECT * FROM tredo')
 data = cur.fetchall()
-#def print_data(data):
-for linha in data:
-    print('id:', linha[0],end=" ")		#o end substitui o ultimo caracter '/n' pelo que for colocado entre as aspas, aqui serve para imprimir tudo na mesma linha
-    print('A:', linha[1],end=" ")
-    print('B:', linha[2])
-    print('-----------------------')
+for linha in data:		#lê os da tabela no BD
+	print('id:', linha[0],end=" ")		#o end substitui o ultimo caracter '/n' pelo que for colocado entre as aspas, aqui serve para imprimir tudo na mesma linha
+	print('A:', linha[1],end=" ")
+	print('B:', linha[2])
+	print('-----------------------')
