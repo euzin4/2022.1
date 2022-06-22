@@ -20,11 +20,13 @@ main:
 	la 	a0, vetor1
 	li 	a1, 8
 	li 	a2, 0
+	li	a3, 8	#tamanho do vet
 	jal	swap
 	
 #	la 	a0, vetor2
 #	li 	a1, 5
 #	li 	a2, 1
+#	li	a3, 6	#tamanho do vet
 #	jal	swap
 	
 	li 	a7, 10   # chamada de sistema para encerrar programa
@@ -44,3 +46,10 @@ swap:
 print:
 	li a7,1
 	
+	li t6,0	#contador loop
+	slli t5,t6,2
+	ecall
+	addi t6,t6,1
+	blt t6,a3,print
+	
+	ret
