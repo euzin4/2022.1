@@ -12,31 +12,32 @@ ql:	.asciz	"\n"
 
 	.text
 main:
-	la a0,txt1
+	la a0,txt1	
 	li a7,4
 	ecall		#printa a escolha de tamanho
 	li a7,5
 	ecall		#entrada de dados pelo usuario
 	li t0,4
 	li t1,1
-	blt a0,t1,erroTam
-	bge a0,t0,erroTam
+	blt a0,t1,erroTam	#entrada<1 =erro
+	bge a0,t0,erroTam	#entrada>=4 =erro
+	#jal insere_bombas
 	j menu
 	
 erroTam:
-	#txt2
-	#volta pro main(escolha de tamanho)
-	
-	#jal insere_bombas
-	
-	
+	la a0,txt2
+	li a7,4
+	ecall		#mensagem de erro
+	j main		#volta pra escolha de tamanho
+		
 menu:
-	jal mostraCampo	
+	jal mostraCampo
+	#opçoes
 	
 mostraCampo:
 	la a0,campoi	#guarda o endereço de 'campoi'
-	li t0,0		#contador
-	li a7,4		#ecall para print de string
+	li t0,0		#contador linha
+	li t1,0		#contador coluna
 	
-loopmcl:
+loopmcl:	#linha
 	
