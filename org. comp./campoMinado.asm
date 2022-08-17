@@ -24,14 +24,9 @@ main:	#escolha do tamanho do campo
 	li t1,1
 	blt a0,t1,erroTam	#entrada<1 =erro
 	bge a0,t0,erroTam	#entrada>=4 =erro
-	la t0,tam1
-	lw t0,0(t0)		#8
-	la t1,tam2
-	lw t1,0(t1)		#10
-	la t2,tam3
-	lw t2,0(t2)		#12
 	#se 'nmr digitado' == 'x' recebe o tamanho de determinado campo
 	#salvar o tamanho do campo em s1
+	jal tamCampo
 	
 	#INSERE_BOMBA
 	#add	a1,zero,s1	# quantidade de linhas do campo
@@ -39,6 +34,26 @@ main:	#escolha do tamanho do campo
 	#jal 	INSERE_BOMBA
 
 	j menu
+	
+tamCampo:
+	li t0,1
+	beq a0,t0,tam8
+	li t0,2
+	beq a0,t0,tam10
+	li t0,3
+	beq a0,t0,tam12	
+tam8:
+	la t0,tam1
+	lw s1,0(t0)		#8
+	ret
+tam10:
+	la t1,tam2
+	lw s1,0(t1)		#10
+	ret
+tam12:
+	la t2,tam3
+	lw s1,0(t2)		#12
+	ret
 	
 erroTam:
 	la a0,txt2
